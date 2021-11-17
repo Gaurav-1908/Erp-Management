@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>
+        Register
+    </title>
+    <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <style>
+      div {
+        border-style: rounded;
+        border-color: coral;
+        border-width: 7px;
+      }
+    </style>
+    
+    <body style = "background-color :  #010931">
+        <div class = "container-fluid" >
+          <h4 style = "color : white">ERP Management</h4>
+          <br> <br> <br> <br> 
+          <div class = "col-md-12" >
+            <div class ="col-md-3">
+            </div>
+            <div class = "col-md-4" style = "background-color :#011059;  padding-bottom : 15px; padding-top : 15px">
+            <h4 style = "color : white"><b>Register</b></h4>
+              
+              <form action="{% url 'signin' %}" >
+                  <div class = "col-md-12">
+                    <div class="col-md-6 ">
+                      <div class="form-group">
+                        <label style = "color:white">First Name</label>
+                        <input type="text" name="fname" placeholder="First Name" class="form-control" required id="id_username">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 ">
+                      <div class="form-group">
+                        <label style = "color:white">Last Name</label>
+                        <input type="text" name="lname" placeholder="Last Name" class="form-control" required id="id_username">
+                      </div>
+                    </div>
+                  </div>
+
+                    <div class = "col-md-12">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label style = "color:white">Middle Name</label>
+                                <input type="text" name="mname" placeholder="Middle Name" class="form-control" required id="id_username">
+                            </div>
+                        </div>
+                    </div>
+                
+                  <div class = "col-md-12">
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label style = "color:white">Roll No</label>
+                            <input type="text" name="username" placeholder="Enter Roll No" class="form-control" required id="id_password">
+                        </div>
+                    </div>
+                  </div>
+
+                    <div class = "col-md-12">
+                      <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label style = "color:white">Mail Id</label>
+                            <input type="mail" name="mail" placeholder="Enter Mail Id" class="form-control" required id="id_password">
+                        </div>
+                      </div>
+
+                       <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label style = "color:white">Contact Number</label>
+                            <input type="mail" name="contact" placeholder="Enter Contact Number" class="form-control" required id="id_password">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class = "col-md-12">
+                      <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label style = "color:white">Password</label>
+                            <input type="password" name="password1" placeholder="Password" class="form-control" required id="id_password">
+                        </div>
+                      </div>
+
+                       <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label style = "color:white">Password(confirm)</label>
+                            <input type="password" name="password2" placeholder="please confirm Password" class="form-control" required id="id_password">
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class = "col-md-12">
+                        <br><br><button type="submit" name="Register" class="btn btn-default" style = "padding-left : 25px; padding-right : 25px">Register</button>
+                    </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

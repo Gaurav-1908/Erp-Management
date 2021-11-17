@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    ERP Management
+  </title>
+  <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class = "container-fluid">
+    
+            <nav class="navbar navbar-inverse">
+                
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">ERP Software</a>
+                    </div>
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <form class="navbar-form navbar-left" action="/action_page.php">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                                <!--<button type="submit" class="btn btn-default">Submit</button>-->
+                            </form>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+               
+            </nav>
+        <!-- menu div closed-->
+        
+
+
+        <div class="sidebar" >
+            <div class="sidebar-wrapper" >
+                <div class="logo">
+                    ERP Management
+                </div>
+
+                <ul class="nav">
+                <li class="{% if 'index' in segment %} active {% endif %}">
+                    <a href="/">
+                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <p>Dashboard</p>
+                    </a>
+                </li>
+                
+                
+                <li class="{% if 'notifications' in segment %} active {% endif %}">
+                    <a href="/ui-notifications.html">
+                    <i class="tim-icons icon-bell-55"></i>
+                    <p>Notifications</p>
+                    </a>
+                </li>
+                <li class="{% if 'page-user' in segment %} active {% endif %}">
+                    <a href="/page-user.html">
+                    <i class="tim-icons icon-single-02"></i>
+                    <p>User Profile</p>
+                    </a>
+                </li>
+                <li class="{% if 'tables' in segment %} active {% endif %}">
+                    <a href="/ui-tables.html">
+                    <i class="tim-icons icon-puzzle-10"></i>
+                    <p>Table List</p>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="" >
+                    <i class="tim-icons icon-button-power"></i>
+                    <p>Logout</p>
+                    </a>
+                </li>
+                <!--{% else 
+                %}-->
+                <li class="active">
+                    <a target="_blank" 
+                    href="">
+                    <i class="tim-icons icon-spaceship"></i>
+                    <p>PRO Version</p>
+                    </a>
+                </li>   
+                <!--{% endif 
+                %}-->
+                            
+                </ul>
+                
+            </div>
+        </div><!-- sidebar div clodes-->
+
+    </div><!--main div closed-->
+</body>
+</html>
