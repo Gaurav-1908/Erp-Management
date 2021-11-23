@@ -28,70 +28,92 @@
             <div class = "col-md-4" style = "background-color :#011059;  padding-bottom : 15px; padding-top : 15px">
             <h4 style = "color : white"><b>Register</b></h4>
               
-              <form action="{% url 'signin' %}" >
+              <form action="register" method = "POST">
+                     {% csrf_token %} 
                   <div class = "col-md-12">
-                    <div class="col-md-6 ">
+                    <div class="col-md-12 ">
                       <div class="form-group">
-                        <label style = "color:white">First Name</label>
-                        <input type="text" name="fname" placeholder="First Name" class="form-control" required id="id_username">
+                        <label style = "color:white"> Name</label>
+                        <input type="text" name="name" placeholder="Full Name" class="form-control" >
                       </div>
                     </div>
 
-                    <div class="col-md-6 ">
+                    <!--<div class="col-md-6 ">
                       <div class="form-group">
                         <label style = "color:white">Last Name</label>
                         <input type="text" name="lname" placeholder="Last Name" class="form-control" required id="id_username">
                       </div>
-                    </div>
+                    </div>-->
                   </div>
 
-                    <div class = "col-md-12">
+                    <!--<div class = "col-md-12">
                         <div class="col-md-6 ">
                             <div class="form-group">
                                 <label style = "color:white">Middle Name</label>
                                 <input type="text" name="mname" placeholder="Middle Name" class="form-control" required id="id_username">
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 
-                  <div class = "col-md-12">
+                  <div class = "col-md-12"><br>
                     <div class="col-md-6 ">
                         <div class="form-group">
                             <label style = "color:white">Roll No</label>
-                            <input type="text" name="username" placeholder="Enter Roll No" class="form-control" required id="id_password">
+                            <input type="text" name="roll" placeholder="Enter Roll No" class="form-control" required>
+                            <p style = "color : red">{{error1}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label style = 'color : white' for="sel1">year</label>
+                            <select class="form-control" id="sel1" name = 'year'>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
                         </div>
                     </div>
                   </div>
 
-                    <div class = "col-md-12">
+                    <div class = "col-md-12"><br>
                       <div class="col-md-6 ">
                         <div class="form-group">
                             <label style = "color:white">Mail Id</label>
-                            <input type="mail" name="mail" placeholder="Enter Mail Id" class="form-control" required id="id_password">
+                            <input type="mail" name="mail" placeholder="Enter Mail Id" class="form-control" required>
+                            <p style = "color : red">{{error4}}</p>
                         </div>
                       </div>
 
                        <div class="col-md-6 ">
                         <div class="form-group">
                             <label style = "color:white">Contact Number</label>
-                            <input type="mail" name="contact" placeholder="Enter Contact Number" class="form-control" required id="id_password">
+                            <input type="tel" name="contact" placeholder="Enter 10 digit Number" class="form-control" required>
+                            <p style = "color : red">{{error2}}</p>
                         </div>
                       </div>
                     </div>
 
-                    <div class = "col-md-12">
+                    <div class = "col-md-12"><br>
                       <div class="col-md-6 ">
                         <div class="form-group">
-                            <label style = "color:white">Password</label>
-                            <input type="password" name="password1" placeholder="Password" class="form-control" required id="id_password">
+                            <label style = "color:white">Create Password</label>
+                            <input type="password" name="password1" placeholder="Password" class="form-control" required >
                         </div>
                       </div>
 
                        <div class="col-md-6 ">
                         <div class="form-group">
-                            <label style = "color:white">Password(confirm)</label>
-                            <input type="password" name="password2" placeholder="please confirm Password" class="form-control" required id="id_password">
+                            <label style = "color:white">Confirm Password</label>
+                            <input type="password" name="password2" placeholder="please confirm Password" class="form-control" required>
+                            <p style = "color : red">{{error3}}</p>
                         </div>
+                      </div>
+                    </div>
+
+                    <div class = "col-md-12">
+                     <div class="card-footer">
+                        Already have an acoount? <a href="login" class="">Login</a>
                       </div>
                     </div>
                     
