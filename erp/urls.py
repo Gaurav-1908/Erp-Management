@@ -11,5 +11,7 @@ urlpatterns = [
     path('admin',views.admin),
     path('teacher-dashboard', views.teacher_dashboard),
     path('admin-dashboard', views.admin_dashboard),
+    path('acceptUser',views.acceptUser),
+    path('rejectUser',views.rejectUser),
   
 ]

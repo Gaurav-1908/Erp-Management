@@ -10,12 +10,18 @@ from mysql.connector import errorcode
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 
 
+#mydb = mysql.connector.connect(
+ # host="localhost",
+ # user="dbms",
+#  password="Dbms@1234",
+ # database = 'erp'
+#)
 
 mydb = mysql.connector.connect(
-  host="localhost",
-  user="dbms",
-  password="Dbms@1234",
-  database = 'erp'
+   host="dbms-mini-project.duckdns.org",
+   user="dbms",
+   password="dbms",
+   database = 'erp'
 )
 
 loged_in_user_roll = ''
@@ -119,8 +125,8 @@ def register(request):
             return render(request, 'erp/register.html', context)
 
         mycursor = mydb.cursor() 
-        sql = 'insert into students(Roll_no,name,contact_no,mail_id,year,password) values(%s,%s,%s,%s,%s,%s)'   
-        val = (roll_no,name,contact,mail,year,password1)
+        sql = 'insert into students(Roll_no,name,contact_no,mail_id,year,password,is_admitted) values(%s,%s,%s,%s,%s,%s,%s)'   
+        val = (roll_no,name,contact,mail,year,password1,'no')
 
         mycursor.execute(sql, val)
         mydb.commit()
@@ -131,12 +137,12 @@ def register(request):
 def teacher(request):
     print('here')
     if request.method == 'POST':
-        id = request.POST.get('username')
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
         mycursor = mydb.cursor()
-        sql = "select name,password from teacher where id = %s"
-        mycursor.execute(sql,(id,))
+        sql = "select name,password from teacher where name = %s"
+        mycursor.execute(sql,(username,))
 
         try:
             user = mycursor.fetchall()[0]
@@ -162,12 +168,12 @@ def teacher_dashboard(request):
 def admin(request):
     print('here')
     if request.method == 'POST':
-        id = request.POST.get('username')
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
         mycursor = mydb.cursor()
-        sql = "select id,password from admin where id = %s"
-        mycursor.execute(sql,(id,))
+        sql = "select username,password from admin where username = %s"
+        mycursor.execute(sql,(username,))
 
         try:
             user = mycursor.fetchall()[0]
@@ -178,13 +184,43 @@ def admin(request):
                 loged_in_user_roll = id
                 loged_in_user_name = user[0]
                 print(user[1], '', password)
-                return redirect('/erp/teacher-dashboard')
-            return render(request, 'erp/teacher.html',{'invalid_password' : 'Invalid password'})
+                return redirect('/erp/admin-dashboard')
+            return render(request, 'erp/admin.html',{'invalid_password' : 'Invalid password'})
         except IndexError:
-            return render(request, 'erp/teacher.html',{'invalid_username' : 'Invalid Username'})
+            return render(request, 'erp/admin.html',{'invalid_username' : 'Invalid Username'})
 
     return render(request, 'erp/admin.html')
 
 def admin_dashboard(request):
-    return render(request, 'erp/admin_dashboard.html')
+    mycursor = mydb.cursor()
+    sql = "select roll_no AS roll,name AS name from students where is_admitted = %s"
+    status = '0'
+    mycursor.execute(sql,(status,))
+    print(mycursor)
+    students = [{'roll':x[0], 'name':x[1]} for x in mycursor.fetchall()]
+    print(students)
+    #mycursor.close()
+    return render(request, 'erp/admin_dashboard.html',{'students' : students})
+
+def acceptUser(request):
+    if request.method == 'POST':
+        roll_no = request.POST.get('roll')
+        method = request.POST.get('action') 
+        mycursor = mydb.cursor()
+        query = "update students set is_admitted = 1 where roll_no = %s"
+        mycursor.execute(query,(roll_no,))
+        mydb.commit()
+        return HttpResponse("Student Accepted")
+    return HttpResponse("User Updation Failed")
+
+def rejectUser(request):
+    if request.method == 'POST':
+        roll_no = request.POST.get('roll')
+        method = request.POST.get('action') 
+        mycursor = mydb.cursor()
+        query = "delete from students where roll_no = %s"
+        mycursor.execute(query,(roll_no,))
+        mydb.commit()
+        return HttpResponse("Student Rejected")
+    return HttpResponse("User Rejection Failed")
 
