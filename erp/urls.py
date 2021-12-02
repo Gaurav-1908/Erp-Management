@@ -13,5 +13,10 @@ urlpatterns = [
     path('admin-dashboard', views.admin_dashboard),
     path('acceptUser',views.acceptUser),
     path('rejectUser',views.rejectUser),
+    path('add-teacher', views.add_teacher),
+    path('add-admin', views.add_admin),
+    #path('accepted',views.accepted),
+    path('removeTeacher',views.remove_teacher),
+    path('deleteAdmin',views.delete_admin),
   
 ]
