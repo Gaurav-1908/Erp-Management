@@ -19,8 +19,8 @@ regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 # mysql -udbms -pdbms -h dbms-mini-project.duckdns.org erp
 mydb = mysql.connector.connect(
    host="dbms-mini-project.duckdns.org",
-   user="dbms",#root
-   password="dbms",#tour
+   user="dbms",
+   password="****",
    database = 'erp'
 )
 
